@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="PermissionBackround" format="reference"></attr>
+    <attr name="PermissionTitleColor" format="color"></attr>
+    <attr name="PermissionMsgColor" format="color"></attr>
+    <attr name="PermissionItemTextColor" format="color"></attr>
+    <attr name="PermissionButtonTextColor" format="color"></attr>
+    <attr name="PermissionButtonBackground" format="reference"></attr>
+</resources>

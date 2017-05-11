@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:layout_marginLeft="16.0dip"
+              android:id="@+id/llRoot"
+              android:layout_marginRight="16.0dip"
+              android:background="@drawable/shape_bg_white"
+              android:gravity="center"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32.0dip"
+        android:gravity="center"
+        android:text=""
+        android:textSize="20.0sp"/>
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24.0dip"
+        android:gravity="center"
+        android:text=""
+        android:textSize="12.0sp"/>
+
+    <!--<LinearLayout-->
+    <!--android:id="@+id/permission_container"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="24.0dip"-->
+    <!--android:layout_marginRight="24.0dip"-->
+    <!--android:layout_marginTop="24.0dip"-->
+    <!--android:divider="@drawable/spacer_30"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:showDividers="middle"/>-->
+
+    <me.weyye.hipermission.WrapHeightGridView
+        android:numColumns="1"
+        android:id="@+id/gvPermission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24.0dip"
+        android:layout_marginRight="24.0dip"
+        android:layout_marginTop="24.0dip"/>
+
+    <!--<View-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="1.0dip"-->
+        <!--android:layout_marginTop="30.0dip"-->
+        <!--android:src="#ffdddddd"/>-->
+
+    <Button
+        android:id="@+id/goto_settings"
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:layout_marginBottom="12.0dip"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginRight="16.0dip"
+        android:layout_marginTop="12.0dip"
+        android:background="@drawable/shape_btn_next"
+        android:text="下一步"
+        android:textColor="@android:color/white"
+        android:textSize="16.0sp"/>
+</LinearLayout>
