@@ -34,7 +34,7 @@ public class HiPermission {
     private String[] mNormalPermissions = {
             WRITE_EXTERNAL_STORAGE, ACCESS_FINE_LOCATION, CAMERA};
     private int[] mNormalPermissionIconRes = {
-            R.drawable.permission_ic_memory, R.drawable.permission_ic_location, R.drawable.permission_ic_camera_green};
+            R.drawable.permission_ic_memory, R.drawable.permission_ic_location, R.drawable.permission_ic_camera};
     private int mFilterColor = -1;
 
     public static HiPermission create(Context context) {

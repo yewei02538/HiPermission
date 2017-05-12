@@ -11,6 +11,7 @@
               android:orientation="vertical">
 
     <TextView
+
         android:id="@+id/tvTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -20,6 +21,8 @@
         android:textSize="20.0sp"/>
 
     <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/tvDesc"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -64,7 +67,7 @@
         android:layout_marginRight="16.0dip"
         android:layout_marginTop="12.0dip"
         android:background="@drawable/shape_btn_next"
-        android:text="下一步"
+        android:text="@string/permission_btn_next"
         android:textColor="@android:color/white"
         android:textSize="16.0sp"/>
 </LinearLayout>

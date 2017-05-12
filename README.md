@@ -5,9 +5,17 @@ A simple and beautiful runtime permission library on Android.
 # Features
 * One line of code to solve
 * Various logics are omitted
-* Can change permission Ui
+* Support change permission Ui
 
 `ACCESS_FINE_LOCATION`,`WRITE_EXTERNAL_STORAGE` and `CAMERA`,these almost every app requires permissions ,so we can request these permissions when app launch.But it's not very friendly to request so many permissions at once.So before the request permission, we need to tell the user why we did this.The inspiration comes from [eleme](https://play.google.com/store/apps/details?id=me.ele)
+
+# Screenshot
+
+![](/screenshot/screenshot1.gif)
+
+#Demo
+
+[Download](/screenshot/app-debug.apk)
 
 # Usage
 Use Gradle:
@@ -23,7 +31,7 @@ Or Maven:
 	  <type>pom</type>
 	</dependency>
   
-  In your activity or anywhere:
+  In your Activity or anywhere:
   
   They will request three necessary permissions：`CAMERA`,`ACCESS_FINE_LOCATION` and `WRITE_EXTERNAL_STORAGE`
   ``` java
@@ -89,6 +97,9 @@ styles.xml
     </style>
 ```
 
+![](/screenshot/screenshot2.gif)
+
+
 The following are all attributes
 
 
@@ -104,7 +115,7 @@ The following are all attributes
 # End
 If you like,please give a star as an encouragement to me
 
-# Contact me
+# About me
 * Email:[hiweyye@gmail.com](mailto:hiweyye@gmail.com)
 * My Blog:[http://weyye.me](http://weyye.me)
 * 简书:[http://www.jianshu.com/u/c5da2f9c87fb](http://www.jianshu.com/u/c5da2f9c87fb)

@@ -12,11 +12,17 @@
         android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="申请多个权限"/>
+        android:text="@string/muti_permission_default_style"/>
 
     <Button
         android:id="@+id/btn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="申请单个权限"/>
+        android:text="@string/muti_permission_blue_style"/>
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/single_permission"/>
 </LinearLayout>

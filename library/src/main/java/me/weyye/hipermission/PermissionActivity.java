@@ -78,13 +78,13 @@ public class PermissionActivity extends AppCompatActivity {
 
 
     private String getPermissionTitle() {
-        return TextUtils.isEmpty(mTitle) ? String.format(getString(R.string.dialog_title), mAppName) : mTitle;
+        return TextUtils.isEmpty(mTitle) ? String.format(getString(R.string.permission_dialog_title), mAppName) : mTitle;
     }
 
     private void showPermissionDialog() {
 
         String title = getPermissionTitle();
-        String msg = TextUtils.isEmpty(mMsg) ? String.format(getString(R.string.dialog_msg), mAppName) : mMsg;
+        String msg = TextUtils.isEmpty(mMsg) ? String.format(getString(R.string.permission_dialog_msg), mAppName) : mMsg;
 
         PermissionView contentView = new PermissionView(this);
         contentView.setGridViewColum(mCheckPermissions.size() < 3 ? mCheckPermissions.size() : 3);
@@ -130,7 +130,7 @@ public class PermissionActivity extends AppCompatActivity {
         String permissionName = getPermissionItem(permission).PermissionName;
         String alertTitle = String.format(getString(R.string.permission_title), permissionName);
         String msg = String.format(getString(R.string.permission_denied), permissionName, mAppName);
-        showAlertDialog(alertTitle, msg, getString(R.string.cancel), getString(R.string.ensure), new DialogInterface.OnClickListener() {
+        showAlertDialog(alertTitle, msg, getString(R.string.permission_cancel), getString(R.string.permission_ensure), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -223,7 +223,7 @@ public class PermissionActivity extends AppCompatActivity {
                     String name = getPermissionItem(permissions[0]).PermissionName;
                     String title = String.format(getString(R.string.permission_title), name);
                     String msg = String.format(getString(R.string.permission_denied_with_naac), mAppName, name, mAppName);
-                    showAlertDialog(title, msg, getString(R.string.reject), getString(R.string.go_to_setting), new DialogInterface.OnClickListener() {
+                    showAlertDialog(title, msg, getString(R.string.permission_reject), getString(R.string.permission_go_to_setting), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Uri packageURI = Uri.parse("package:" + getPackageName());

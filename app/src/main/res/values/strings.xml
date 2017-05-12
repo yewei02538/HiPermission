@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">HiPermission</string>
+    <string name="muti_permission_default_style">Mutl Permission(Default Style)</string>
+    <string name="muti_permission_blue_style">Mutl Permission(Blue Style)</string>
+    <string name="single_permission">Single Permission</string>
+    <string name="permission_on_close">They cancelled our request</string>
+    <string name="permission_completed">All permissions requested completed</string>
+    <string name="permission_cus_item_camera">Camera</string>
+    <string name="permission_cus_title">Dear God</string>
+    <string name="permission_cus_msg">To protect the peace of the world, open these permissions! You and I together save the world!</string>
 </resources>
