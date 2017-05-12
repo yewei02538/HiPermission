@@ -153,7 +153,6 @@ public class PermissionActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         onClose();
-                        finish();
                     }
                 })
                 .setPositiveButton(PosTxt, onClickListener).create();
@@ -226,9 +225,14 @@ public class PermissionActivity extends AppCompatActivity {
                     showAlertDialog(title, msg, getString(R.string.permission_reject), getString(R.string.permission_go_to_setting), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Uri packageURI = Uri.parse("package:" + getPackageName());
-                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
-                            startActivityForResult(intent, REQUEST_SETTING);
+                            try {
+                                Uri packageURI = Uri.parse("package:" + getPackageName());
+                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
+                                startActivityForResult(intent, REQUEST_SETTING);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                onClose();
+                            }
                         }
                     });
                     onDeny(permissions[0], 0);
@@ -282,6 +286,7 @@ public class PermissionActivity extends AppCompatActivity {
     private void onClose() {
         if (mCallback != null)
             mCallback.onClose();
+        finish();
     }
 
     private void onDeny(String permisson, int position) {

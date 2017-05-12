@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">library</string>
     <string name="permission_storage">Storage</string>
     <string name="permission_location">Location</string>
     <string name="permission_camera">Camera</string>

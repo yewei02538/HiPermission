@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">library</string>
     <string name="permission_storage">存储空间</string>
     <string name="permission_location">位置信息</string>
     <string name="permission_camera">拍照权限</string>
