@@ -13,7 +13,7 @@ A simple and beautiful runtime permission library on Android.
 
 ![](/screenshot/screenshot1.gif)
 
-#Demo
+# Demo
 
 [Download](/screenshot/app-debug.apk)
 
@@ -97,7 +97,7 @@ styles.xml
     </style>
 ```
 
-![](/screenshot/screenshot2.gif)
+![](/screenshot/screenshot2.jpg)
 
 
 The following are all attributes
