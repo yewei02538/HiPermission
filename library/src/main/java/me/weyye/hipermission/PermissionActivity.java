@@ -261,7 +261,6 @@ public class PermissionActivity extends AppCompatActivity {
                 reRequestPermission(mCheckPermissions.get(mRePermissionIndex).Permission);
             } else {
                 onFinish();
-                finish();
             }
         }
 
@@ -281,6 +280,7 @@ public class PermissionActivity extends AppCompatActivity {
     private void onFinish() {
         if (mCallback != null)
             mCallback.onFinish();
+        finish();
     }
 
     private void onClose() {
