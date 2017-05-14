@@ -20,14 +20,14 @@ A simple and beautiful runtime permission library on Android.
 # Usage
 Use Gradle:
 
-	compile 'me.weyye.hipermission:library:1.0.2'
+	compile 'me.weyye.hipermission:library:1.0.3'
 
 Or Maven:
 
 	<dependency>
 	  <groupId>me.weyye.hipermission</groupId>
 	  <artifactId>library</artifactId>
-	  <version>1.0.1</version>
+	  <version>1.0.3</version>
 	  <type>pom</type>
 	</dependency>
   
