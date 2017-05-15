@@ -110,7 +110,7 @@ The following are all attributes
 | PermissionItemTextColor| int |
 | PermissionButtonTextColor| int |
 | PermissionButtonBackground| drawable|
-| PermissionButtonTextColor| drawable|
+| PermissionBackround| drawable|
 
 # End
 If you like,please give a star as an encouragement to me
