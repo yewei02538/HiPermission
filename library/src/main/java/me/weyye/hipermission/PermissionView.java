@@ -3,6 +3,9 @@ package me.weyye.hipermission;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -77,38 +80,61 @@ public class PermissionView extends FrameLayout {
                 R.attr.PermissionItemTextColor,
                 R.attr.PermissionButtonTextColor,
                 R.attr.PermissionBackround,
-                R.attr.PermissionButtonBackground
+                R.attr.PermissionButtonBackground,
+                R.attr.PermissionBgFilterColor,
+                R.attr.PermissionIconFilterColor
         };
         Resources.Theme theme = getResources().newTheme();
         theme.applyStyle(styleId, true);
 
         TypedArray typedArray = theme.obtainStyledAttributes(ints);
-        int msgColor = typedArray.getColor(0, -1);
-        int titleColor = typedArray.getColor(1, -1);
-        int itemTextColor = typedArray.getColor(2, -1);
-        int btnTextColor = typedArray.getColor(3, -1);
+        int msgColor = typedArray.getColor(0, 0);
+        int titleColor = typedArray.getColor(1, 0);
+        int itemTextColor = typedArray.getColor(2, 0);
+        int btnTextColor = typedArray.getColor(3, 0);
         Drawable background = typedArray.getDrawable(4);
         Drawable Btnbackground = typedArray.getDrawable(5);
+        int bgFilterColor = typedArray.getColor(6, 0);
+        int iconFilterColor = typedArray.getColor(7, 0);
 
-
-        if (titleColor != -1)
+        if (titleColor != 0)
             mTvTitle.setTextColor(titleColor);
-        if (background != null)
-            mLlRoot.setBackground(background);
-        if (msgColor != -1)
+        if (background != null) {
+            if (bgFilterColor != 0)
+                background.setColorFilter(getColorFilter(bgFilterColor));
+            mLlRoot.setBackgroundDrawable(background);
+        }
+        if (msgColor != 0)
             mTvDesc.setTextColor(msgColor);
-        if (itemTextColor != -1)
+        if (itemTextColor != 0)
             ((PermissionAdapter) mGvPermission.getAdapter()).setTextColor(itemTextColor);
         if (Btnbackground != null)
-            mBtnNext.setBackground(Btnbackground);
-        if (btnTextColor != -1)
+            mBtnNext.setBackgroundDrawable(Btnbackground);
+        if (btnTextColor != 0)
             mBtnNext.setTextColor(btnTextColor);
+        if (iconFilterColor != 0)
+            setFilterColor(iconFilterColor);
+
         typedArray.recycle();
 
     }
 
+    private ColorFilter getColorFilter(int bgFilterColor) {
+        int blue = Color.blue(bgFilterColor);
+        int green = Color.green(bgFilterColor);
+        int red = Color.red(bgFilterColor);
+        float[] cm = new float[]{
+                1, 0, 0, 0, red,// 红色值
+                0, 1, 0, 0, green,// 绿色值
+                0, 0, 1, 0, blue,// 蓝色值
+                0, 0, 0, 1, 1 // 透明度
+        };
+        ColorMatrixColorFilter filter = new ColorMatrixColorFilter(cm);
+        return filter;
+    }
+
     public void setFilterColor(int color) {
-        if (color == -1)
+        if (color == 0)
             return;
 
         ((PermissionAdapter) mGvPermission.getAdapter()).setFilterColor(color);

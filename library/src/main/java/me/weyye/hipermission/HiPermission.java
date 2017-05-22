@@ -34,8 +34,9 @@ public class HiPermission {
     private String[] mNormalPermissions = {
             WRITE_EXTERNAL_STORAGE, ACCESS_FINE_LOCATION, CAMERA};
     private int[] mNormalPermissionIconRes = {
-            R.drawable.permission_ic_memory, R.drawable.permission_ic_location, R.drawable.permission_ic_camera};
-    private int mFilterColor = -1;
+            R.drawable.permission_ic_storage, R.drawable.permission_ic_location, R.drawable.permission_ic_camera};
+    private int mFilterColor = 0;
+    private int mAnimStyleId = -1;
 
     public static HiPermission create(Context context) {
         return new HiPermission(context);
@@ -63,6 +64,11 @@ public class HiPermission {
 
     public HiPermission filterColor(int color) {
         mFilterColor = color;
+        return this;
+    }
+
+    public HiPermission animStyle(int styleId) {
+        mAnimStyleId = styleId;
         return this;
     }
 
@@ -94,7 +100,8 @@ public class HiPermission {
      */
     public void checkMutiPermission(PermissionCallback callback) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            callback.onFinish();
+            if (callback != null)
+                callback.onFinish();
             return;
         }
 
@@ -113,7 +120,8 @@ public class HiPermission {
         if (mCheckPermissions.size() > 0) {
             startActivity();
         } else {
-            callback.onFinish();
+            if (callback != null)
+                callback.onFinish();
         }
 
 
@@ -127,7 +135,8 @@ public class HiPermission {
      */
     public void checkSinglePermission(String permission, PermissionCallback callback) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M || checkPermission(mContext, permission)) {
-            callback.onGuarantee(permission, 0);
+            if (callback != null)
+                callback.onGuarantee(permission, 0);
             return;
         }
         mCallback = callback;
@@ -145,6 +154,7 @@ public class HiPermission {
         intent.putExtra(ConstantValue.DATA_MSG, mMsg);
         intent.putExtra(ConstantValue.DATA_FILTER_COLOR, mFilterColor);
         intent.putExtra(ConstantValue.DATA_STYLE_ID, mStyleResId);
+        intent.putExtra(ConstantValue.DATA_ANIM_STYLE, mAnimStyleId);
         intent.putExtra(ConstantValue.DATA_PERMISSONS, (Serializable) mCheckPermissions);
         mContext.startActivity(intent);
     }

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="muti_permission_default_style">申请多个权限(Default Style)</string>
-    <string name="muti_permission_blue_style">申请多个权限(Blue Style)</string>
+    <string name="muti_permission_default_style">申请多个权限(Default Style With Fade)</string>
+    <string name="muti_permission_blue_style">申请多个权限(Blue Style With Scale)</string>
+    <string name="muti_permission_green_style">申请多个权限(Green Style With Modal)</string>
     <string name="single_permission">申请单个权限</string>
     <string name="permission_on_close">用户关闭权限申请</string>
     <string name="permission_completed">所有权限申请完成</string>
     <string name="permission_cus_item_camera">照相机</string>
+    <string name="permission_cus_item_phone">拨打手机</string>
     <string name="permission_cus_title">亲爱的上帝</string>
     <string name="permission_cus_msg">为了保护世界的和平，开启这些权限吧！\n你我一起拯救世界！</string>
 </resources>

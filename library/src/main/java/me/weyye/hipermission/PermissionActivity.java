@@ -1,5 +1,6 @@
 package me.weyye.hipermission;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 
 import java.util.List;
 import java.util.ListIterator;
@@ -35,7 +37,7 @@ public class PermissionActivity extends AppCompatActivity {
     private String mMsg;
     private static PermissionCallback mCallback;
     private List<PermissonItem> mCheckPermissions;
-    private AlertDialog mDialog;
+    private Dialog mDialog;
 
     private static final int REQUEST_CODE_SINGLE = 1;
     private static final int REQUEST_CODE_MUTI = 2;
@@ -46,6 +48,7 @@ public class PermissionActivity extends AppCompatActivity {
     private CharSequence mAppName;
     private int mStyleId;
     private int mFilterColor;
+    private int mAnimStyleId;
 
     public static void setCallBack(PermissionCallback callBack) {
         PermissionActivity.mCallback = callBack;
@@ -94,9 +97,10 @@ public class PermissionActivity extends AppCompatActivity {
         contentView.setGridViewAdapter(new PermissionAdapter(mCheckPermissions));
         if (mStyleId == -1) {
             //用户没有设置，使用默认绿色主题
-            mStyleId = R.style.PermissionGreenStyle;
+            mStyleId = R.style.PermissionDefaultNormalStyle;
             mFilterColor = getResources().getColor(R.color.permissionColorGreen);
         }
+
         contentView.setStyleId(mStyleId);
         contentView.setFilterColor(mFilterColor);
         contentView.setBtnOnClickListener(new View.OnClickListener() {
@@ -108,10 +112,12 @@ public class PermissionActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(PermissionActivity.this, strs, REQUEST_CODE_MUTI);
             }
         });
+        mDialog = new Dialog(this);
+        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        mDialog.setContentView(contentView);
+        if (mAnimStyleId != -1)
+            mDialog.getWindow().setWindowAnimations(mAnimStyleId);
 
-        mDialog = new AlertDialog.Builder(this)
-                .setView(contentView)
-                .create();
         mDialog.setCanceledOnTouchOutside(false);
         mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         mDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -125,6 +131,7 @@ public class PermissionActivity extends AppCompatActivity {
         });
         mDialog.show();
     }
+
 
     private void reRequestPermission(final String permission) {
         String permissionName = getPermissionItem(permission).PermissionName;
@@ -173,8 +180,9 @@ public class PermissionActivity extends AppCompatActivity {
         mPermissionType = intent.getIntExtra(ConstantValue.DATA_PERMISSION_TYPE, PERMISSION_TYPE_SINGLE);
         mTitle = intent.getStringExtra(ConstantValue.DATA_TITLE);
         mMsg = intent.getStringExtra(ConstantValue.DATA_MSG);
-        mFilterColor = intent.getIntExtra(ConstantValue.DATA_FILTER_COLOR, -1);
+        mFilterColor = intent.getIntExtra(ConstantValue.DATA_FILTER_COLOR, 0);
         mStyleId = intent.getIntExtra(ConstantValue.DATA_STYLE_ID, -1);
+        mAnimStyleId = intent.getIntExtra(ConstantValue.DATA_ANIM_STYLE, -1);
         mCheckPermissions = (List<PermissonItem>) intent.getSerializableExtra(ConstantValue.DATA_PERMISSONS);
     }
 
@@ -251,10 +259,23 @@ public class PermissionActivity extends AppCompatActivity {
     }
 
     @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(0, 0);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.e(TAG, "onActivityResult--requestCode:" + requestCode + ",resultCode:" + resultCode);
         if (requestCode == REQUEST_SETTING) {
+            if (mDialog != null && mDialog.isShowing())
+                mDialog.dismiss();
             checkPermission();
             if (mCheckPermissions.size() > 0) {
                 mRePermissionIndex = 0;
