@@ -176,6 +176,8 @@ The following are all attributes
 | PermissionButtonTextColor| int |
 | PermissionButtonBackground| drawable|
 | PermissionBackround| drawable|
+| PermissionBgFilterColor|int|
+| PermissionIconFilterColor|int|
 
 # End
 If you like,please give a star as an encouragement to me
