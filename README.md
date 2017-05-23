@@ -1,6 +1,6 @@
 # HiPermission
-A simple and beautiful runtime permission library on Android.
-[中文文档](http://www.jianshu.com/p/c83503f0384d)
+A simple and beautiful runtime permission library on Android.[中文文档](/README-CN.md)
+
 
 # Features
 * One line of code to solve
@@ -71,6 +71,8 @@ HiPermission.create(MainActivity.this)
 			.checkMutiPermission(...);
 ```
 
+## Custom Style
+
 Can I change the color of the interface? Or change hint information? Yes!
 
 ``` java
@@ -82,7 +84,9 @@ HiPermission.create(MainActivity.this)
 			.style(R.style.PermissionBlueStyle)
 			.checkMutiPermission(...);
 ```
+
 > After you have set the theme, you must called `filterColor ()` to set the color of the icon,otherwise the default is black
+
 
 styles.xml
 
@@ -98,6 +102,67 @@ styles.xml
 ```
 
 ![](/screenshot/screenshot2.jpg)
+
+## Default Icon
+
+If you need to request other permissions, but no icon? `HiPermission` has been prepared for you
+
+| |Calendar|Camera|Contacts|Location|
+|:-:|:-:|:-:|:-:|:-:|
+| |![](http://upload-images.jianshu.io/upload_images/1643415-f64d7048c37dd8e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|![](http://upload-images.jianshu.io/upload_images/1643415-1697d58118fce639.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|![](http://upload-images.jianshu.io/upload_images/1643415-e897ebfaa200ad34.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|![](http://upload-images.jianshu.io/upload_images/1643415-ee31c852a07475df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|
+|drawableId|permission_ic_calendar|permission_ic_camera|permission_ic_contacts|permission_ic_location|
+
+
+| |Micro Phone|Phone|Sms|Storage|Sensors|
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| |![](http://upload-images.jianshu.io/upload_images/1643415-42be4b1f4d72c177.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|![](http://upload-images.jianshu.io/upload_images/1643415-7dd3e979f0448ad5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|![](http://upload-images.jianshu.io/upload_images/1643415-af7115c6855019f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|![](http://upload-images.jianshu.io/upload_images/1643415-c21d7061a286192c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|![](http://upload-images.jianshu.io/upload_images/1643415-9905653ae13b86e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|
+|drawableId|permission_ic_micro_phone|permission_ic_phone|permission_ic_sms|permission_ic_storage|permission_ic_sensors|
+
+Use icon 
+
+``` java
+List<PermissonItem> permissons = new ArrayList<PermissonItem>();
+//use default icon
+permissons.add(new PermissonItem(Manifest.permission.CALL_PHONE, getString(R.string.permission_cus_item_phone), R.drawable.permission_ic_phone));
+HiPermission.create(MainActivity.this)
+		.permissions(permissons)
+		.style(R.style.PermissionDefaultGreenStyle)
+		.checkMutiPermission(...);
+```
+
+>The icon is black by default, and you need to called `filterColor ()` to change the icon color
+
+## Default Style
+
+Of course, there are three default style and animations
+
+| |Screenshot| Screenshot|Screenshot|
+|:-:|:-:|:-:| :-:|
+| |![](http://upload-images.jianshu.io/upload_images/1643415-9778484edc5c78a7.gif?imageMogr2/auto-orient/strip) |![](http://upload-images.jianshu.io/upload_images/1643415-f2eb04a9b1421357.gif?imageMogr2/auto-orient/strip)|![](http://upload-images.jianshu.io/upload_images/1643415-0a8990f176c5bb8f.gif?imageMogr2/auto-orient/strip)|
+|styleId|PermissionDefaultNormalStyle|PermissionDefaultGreenStyle|PermissionDefaultBlueStyle|
+|AnimId|PermissionAnimFade|PermissionAnimModal|PermissionAnimScale|
+
+Theme by default without animation, you need to call animStyle () like this:
+
+``` java
+HiPermission.create(MainActivity.this)
+                        .title(getString(R.string.permission_cus_title))
+                        .permissions(permissons)
+                        .msg(getString(R.string.permission_cus_msg))
+                        .animStyle(R.style.PermissionAnimModal)//set dialog animation
+                        .style(R.style.PermissionDefaultGreenStyle)//set dialog style 
+                        .checkMutiPermission(...);
+```
+
+If you want to change the style of a attribute, you can extends a style inside your style override a attribute, like this
+
+``` xml
+    <style name="CusStyle" parent="PermissionDefaultGreenStyle">
+        <item name="PermissionBgFilterColor">#75D175</item>
+    </style>
+```
+
+![](http://upload-images.jianshu.io/upload_images/1643415-4dc09678be25a146.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 The following are all attributes
