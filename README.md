@@ -138,7 +138,7 @@ Of course, there are three default style and animations
 
 | |Screenshot| Screenshot|Screenshot|
 |:-:|:-:|:-:| :-:|
-| |![](http://upload-images.jianshu.io/upload_images/1643415-9778484edc5c78a7.gif?imageMogr2/auto-orient/strip) |![](http://upload-images.jianshu.io/upload_images/1643415-f2eb04a9b1421357.gif?imageMogr2/auto-orient/strip)|![](http://upload-images.jianshu.io/upload_images/1643415-0a8990f176c5bb8f.gif?imageMogr2/auto-orient/strip)|
+| |![](/screenshot/45cd8b0505.gif) |![](/screenshot/3ceb82af5f.gif)|![](/screenshot/6771a424d1.gif)|
 |styleId|PermissionDefaultNormalStyle|PermissionDefaultGreenStyle|PermissionDefaultBlueStyle|
 |AnimId|PermissionAnimFade|PermissionAnimModal|PermissionAnimScale|
 
@@ -162,7 +162,7 @@ If you want to change the style of a attribute, you can extends a style inside y
     </style>
 ```
 
-![](http://upload-images.jianshu.io/upload_images/1643415-4dc09678be25a146.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](/screenshot/20170524135456.jpg)
 
 
 The following are all attributes
