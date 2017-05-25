@@ -36,7 +36,7 @@ public class PermissionActivity extends AppCompatActivity {
     private String mTitle;
     private String mMsg;
     private static PermissionCallback mCallback;
-    private List<PermissonItem> mCheckPermissions;
+    private List<PermissionItem> mCheckPermissions;
     private Dialog mDialog;
 
     private static final int REQUEST_CODE_SINGLE = 1;
@@ -183,7 +183,7 @@ public class PermissionActivity extends AppCompatActivity {
         mFilterColor = intent.getIntExtra(ConstantValue.DATA_FILTER_COLOR, 0);
         mStyleId = intent.getIntExtra(ConstantValue.DATA_STYLE_ID, -1);
         mAnimStyleId = intent.getIntExtra(ConstantValue.DATA_ANIM_STYLE, -1);
-        mCheckPermissions = (List<PermissonItem>) intent.getSerializableExtra(ConstantValue.DATA_PERMISSONS);
+        mCheckPermissions = (List<PermissionItem>) intent.getSerializableExtra(ConstantValue.DATA_PERMISSIONS);
     }
 
     /**
@@ -208,7 +208,7 @@ public class PermissionActivity extends AppCompatActivity {
                 for (int i = 0; i < grantResults.length; i++) {
                     //权限允许后，删除需要检查的权限
                     if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                        PermissonItem item = getPermissionItem(permissions[i]);
+                        PermissionItem item = getPermissionItem(permissions[i]);
                         mCheckPermissions.remove(item);
                         onGuarantee(permissions[i], i);
                     } else {
@@ -289,7 +289,7 @@ public class PermissionActivity extends AppCompatActivity {
 
     private void checkPermission() {
 
-        ListIterator<PermissonItem> iterator = mCheckPermissions.listIterator();
+        ListIterator<PermissionItem> iterator = mCheckPermissions.listIterator();
         while (iterator.hasNext()) {
             int checkPermission = ContextCompat.checkSelfPermission(getApplicationContext(), iterator.next().Permission);
             if (checkPermission == PackageManager.PERMISSION_GRANTED) {
@@ -310,20 +310,20 @@ public class PermissionActivity extends AppCompatActivity {
         finish();
     }
 
-    private void onDeny(String permisson, int position) {
+    private void onDeny(String permission, int position) {
         if (mCallback != null)
-            mCallback.onDeny(permisson, position);
+            mCallback.onDeny(permission, position);
     }
 
-    private void onGuarantee(String permisson, int position) {
+    private void onGuarantee(String permission, int position) {
         if (mCallback != null)
-            mCallback.onGuarantee(permisson, position);
+            mCallback.onGuarantee(permission, position);
     }
 
-    private PermissonItem getPermissionItem(String permission) {
-        for (PermissonItem permissonItem : mCheckPermissions) {
-            if (permissonItem.Permission.equals(permission))
-                return permissonItem;
+    private PermissionItem getPermissionItem(String permission) {
+        for (PermissionItem permissionItem : mCheckPermissions) {
+            if (permissionItem.Permission.equals(permission))
+                return permissionItem;
         }
         return null;
     }

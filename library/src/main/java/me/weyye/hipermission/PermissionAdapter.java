@@ -15,11 +15,11 @@ import java.util.List;
  */
 
 public class PermissionAdapter extends BaseAdapter {
-    private List<PermissonItem> mData;
+    private List<PermissionItem> mData;
     private int mTextColor;
     private int mFilterColor;
 
-    public PermissionAdapter(List<PermissonItem> data) {
+    public PermissionAdapter(List<PermissionItem> data) {
         mData = data;
     }
 
@@ -40,7 +40,7 @@ public class PermissionAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        PermissonItem item = mData.get(position);
+        PermissionItem item = mData.get(position);
         View view = View.inflate(parent.getContext(), R.layout.permission_info_item, null);
         int blue = Color.blue(mFilterColor);
         int green = Color.green(mFilterColor);

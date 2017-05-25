@@ -49,12 +49,12 @@ HiPermission.create(context)
 		}
 
 		@Override
-		public void onDeny(String permisson, int position) {
+		public void onDeny(String permission, int position) {
 			Log.i(TAG, "onDeny");
 		}
 
 		@Override
-		public void onGuarantee(String permisson, int position) {
+		public void onGuarantee(String permission, int position) {
 			Log.i(TAG, "onGuarantee");
 		}
 	});
@@ -63,11 +63,11 @@ HiPermission.create(context)
 Sometimes you don't need to request for these permissions,you can add permissions that you want to request like this
 
 ``` java
-List<PermissonItem> permissonItems = new ArrayList<PermissonItem>();
-permissonItems.add(new PermissonItem(Manifest.permission.CAMERA, "Camera", R.drawable.permission_ic_memory));
-permissonItems.add(new PermissonItem(Manifest.permission.ACCESS_FINE_LOCATION, "Location", R.drawable.permission_ic_location));
+List<PermissionItem> permissionItems = new ArrayList<PermissionItem>();
+permissionItems.add(new PermissionItem(Manifest.permission.CAMERA, "Camera", R.drawable.permission_ic_memory));
+permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION, "Location", R.drawable.permission_ic_location));
 HiPermission.create(MainActivity.this)
-			.permissions(permissonItems)
+			.permissions(permissionItems)
 			.checkMutiPermission(...);
 ```
 
@@ -78,7 +78,7 @@ Can I change the color of the interface? Or change hint information? Yes!
 ``` java
 HiPermission.create(MainActivity.this)
 			.title("Dear God")
-			.permissions(permissonItems)
+			.permissions(permissionItems)
 			.filterColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, getTheme()))//permission icon color
 			.msg("To protect the peace of the world, open these permissions! You and I together save the world!")
 			.style(R.style.PermissionBlueStyle)
@@ -118,14 +118,14 @@ If you need to request other permissions, but no icon? `HiPermission` has been p
 | |![](http://upload-images.jianshu.io/upload_images/1643415-42be4b1f4d72c177.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|![](http://upload-images.jianshu.io/upload_images/1643415-7dd3e979f0448ad5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|![](http://upload-images.jianshu.io/upload_images/1643415-af7115c6855019f7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|![](http://upload-images.jianshu.io/upload_images/1643415-c21d7061a286192c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|![](http://upload-images.jianshu.io/upload_images/1643415-9905653ae13b86e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)|
 |drawableId|permission_ic_micro_phone|permission_ic_phone|permission_ic_sms|permission_ic_storage|permission_ic_sensors|
 
-Use icon 
+Use icon
 
 ``` java
-List<PermissonItem> permissons = new ArrayList<PermissonItem>();
+List<PermissionItem> permissions = new ArrayList<PermissionItem>();
 //use default icon
-permissons.add(new PermissonItem(Manifest.permission.CALL_PHONE, getString(R.string.permission_cus_item_phone), R.drawable.permission_ic_phone));
+permissions.add(new PermissionItem(Manifest.permission.CALL_PHONE, getString(R.string.permission_cus_item_phone), R.drawable.permission_ic_phone));
 HiPermission.create(MainActivity.this)
-		.permissions(permissons)
+		.permissions(permissions)
 		.style(R.style.PermissionDefaultGreenStyle)
 		.checkMutiPermission(...);
 ```
@@ -147,7 +147,7 @@ Theme by default without animation, you need to call animStyle () like this:
 ``` java
 HiPermission.create(MainActivity.this)
                         .title(getString(R.string.permission_cus_title))
-                        .permissions(permissons)
+                        .permissions(permissions)
                         .msg(getString(R.string.permission_cus_msg))
                         .animStyle(R.style.PermissionAnimModal)//set dialog animation
                         .style(R.style.PermissionDefaultGreenStyle)//set dialog style 

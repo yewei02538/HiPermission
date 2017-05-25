@@ -11,7 +11,7 @@ public interface PermissionCallback extends Serializable {
 
     void onFinish();
 
-    void onDeny(String permisson, int position);
+    void onDeny(String permission, int position);
 
-    void onGuarantee(String permisson, int position);
+    void onGuarantee(String permission, int position);
 }

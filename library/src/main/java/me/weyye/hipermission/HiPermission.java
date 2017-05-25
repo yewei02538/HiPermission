@@ -27,7 +27,7 @@ public class HiPermission {
     private String mMsg;
     private int mStyleResId = -1;
     private PermissionCallback mCallback;
-    private List<PermissonItem> mCheckPermissions;
+    private List<PermissionItem> mCheckPermissions;
     private int mPermissionType;
 
     private String[] mNormalPermissionNames;
@@ -57,8 +57,8 @@ public class HiPermission {
         return this;
     }
 
-    public HiPermission permissions(List<PermissonItem> permissonItems) {
-        mCheckPermissions = permissonItems;
+    public HiPermission permissions(List<PermissionItem> permissionItems) {
+        mCheckPermissions = permissionItems;
         return this;
     }
 
@@ -77,12 +77,12 @@ public class HiPermission {
         return this;
     }
 
-    private List<PermissonItem> getNormalPermissions() {
-        List<PermissonItem> permissonItems = new ArrayList<>();
+    private List<PermissionItem> getNormalPermissions() {
+        List<PermissionItem> permissionItems = new ArrayList<>();
         for (int i = 0; i < mNormalPermissionNames.length; i++) {
-            permissonItems.add(new PermissonItem(mNormalPermissions[i], mNormalPermissionNames[i], mNormalPermissionIconRes[i]));
+            permissionItems.add(new PermissionItem(mNormalPermissions[i], mNormalPermissionNames[i], mNormalPermissionIconRes[i]));
         }
-        return permissonItems;
+        return permissionItems;
     }
 
     public static boolean checkPermission(Context context, String permission) {
@@ -111,7 +111,7 @@ public class HiPermission {
         }
 
         //检查权限，过滤已允许的权限
-        Iterator<PermissonItem> iterator = mCheckPermissions.listIterator();
+        Iterator<PermissionItem> iterator = mCheckPermissions.listIterator();
         while (iterator.hasNext()) {
             if (checkPermission(mContext, iterator.next().Permission))
                 iterator.remove();
@@ -142,7 +142,7 @@ public class HiPermission {
         mCallback = callback;
         mPermissionType = PermissionActivity.PERMISSION_TYPE_SINGLE;
         mCheckPermissions = new ArrayList<>();
-        mCheckPermissions.add(new PermissonItem(permission));
+        mCheckPermissions.add(new PermissionItem(permission));
         startActivity();
     }
 
@@ -155,7 +155,7 @@ public class HiPermission {
         intent.putExtra(ConstantValue.DATA_FILTER_COLOR, mFilterColor);
         intent.putExtra(ConstantValue.DATA_STYLE_ID, mStyleResId);
         intent.putExtra(ConstantValue.DATA_ANIM_STYLE, mAnimStyleId);
-        intent.putExtra(ConstantValue.DATA_PERMISSONS, (Serializable) mCheckPermissions);
+        intent.putExtra(ConstantValue.DATA_PERMISSIONS, (Serializable) mCheckPermissions);
         mContext.startActivity(intent);
     }
 

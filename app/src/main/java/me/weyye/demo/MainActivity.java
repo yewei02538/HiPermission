@@ -12,7 +12,7 @@ import java.util.List;
 
 import me.weyye.hipermission.HiPermission;
 import me.weyye.hipermission.PermissionCallback;
-import me.weyye.hipermission.PermissonItem;
+import me.weyye.hipermission.PermissionItem;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -52,12 +52,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
 
                             @Override
-                            public void onDeny(String permisson, int position) {
+                            public void onDeny(String permission, int position) {
                                 Log.i(TAG, "onDeny");
                             }
 
                             @Override
-                            public void onGuarantee(String permisson, int position) {
+                            public void onGuarantee(String permission, int position) {
                                 Log.i(TAG, "onGuarantee");
                             }
                         });
@@ -65,11 +65,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn2:
                 //After you have set the theme, you must called filterColor () to set the color of the icon
                 // ,otherwise the default is black
-                List<PermissonItem> permissonItems = new ArrayList<PermissonItem>();
-                permissonItems.add(new PermissonItem(Manifest.permission.CAMERA, getString(R.string.permission_cus_item_camera), R.drawable.permission_ic_camera));
+                List<PermissionItem> permissionItems = new ArrayList<PermissionItem>();
+                permissionItems.add(new PermissionItem(Manifest.permission.CAMERA, getString(R.string.permission_cus_item_camera), R.drawable.permission_ic_camera));
                 HiPermission.create(MainActivity.this)
                         .title(getString(R.string.permission_cus_title))
-                        .permissions(permissonItems)
+                        .permissions(permissionItems)
                         .msg(getString(R.string.permission_cus_msg))
                         .animStyle(R.style.PermissionAnimScale)
                         .style(R.style.PermissionDefaultBlueStyle)
@@ -86,22 +86,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
 
                             @Override
-                            public void onDeny(String permisson, int position) {
+                            public void onDeny(String permission, int position) {
                                 Log.i(TAG, "onDeny");
                             }
 
                             @Override
-                            public void onGuarantee(String permisson, int position) {
+                            public void onGuarantee(String permission, int position) {
                                 Log.i(TAG, "onGuarantee");
                             }
                         });
                 break;
             case R.id.btn3:
-                List<PermissonItem> permissons = new ArrayList<PermissonItem>();
-                permissons.add(new PermissonItem(Manifest.permission.CALL_PHONE, getString(R.string.permission_cus_item_phone), R.drawable.permission_ic_phone));
+                List<PermissionItem> permissions = new ArrayList<PermissionItem>();
+                permissions.add(new PermissionItem(Manifest.permission.CALL_PHONE, getString(R.string.permission_cus_item_phone), R.drawable.permission_ic_phone));
                 HiPermission.create(MainActivity.this)
                         .title(getString(R.string.permission_cus_title))
-                        .permissions(permissons)
+                        .permissions(permissions)
                         .msg(getString(R.string.permission_cus_msg))
                         .animStyle(R.style.PermissionAnimModal)
                         .style(R.style.PermissionDefaultGreenStyle)
@@ -119,12 +119,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
 
                             @Override
-                            public void onDeny(String permisson, int position) {
+                            public void onDeny(String permission, int position) {
                                 Log.i(TAG, "onDeny");
                             }
 
                             @Override
-                            public void onGuarantee(String permisson, int position) {
+                            public void onGuarantee(String permission, int position) {
                                 Log.i(TAG, "onGuarantee");
                             }
                         });
@@ -143,12 +143,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
 
                     @Override
-                    public void onDeny(String permisson, int position) {
+                    public void onDeny(String permission, int position) {
                         showToast("onDeny");
                     }
 
                     @Override
-                    public void onGuarantee(String permisson, int position) {
+                    public void onGuarantee(String permission, int position) {
                         showToast("onGuarantee");
                     }
                 });

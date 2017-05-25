@@ -45,12 +45,12 @@ HiPermission.create(context)
 		}
 
 		@Override
-		public void onDeny(String permisson, int position) {
+		public void onDeny(String permission, int position) {
 			Log.i(TAG, "onDeny");
 		}
 
 		@Override
-		public void onGuarantee(String permisson, int position) {
+		public void onGuarantee(String permission, int position) {
 			Log.i(TAG, "onGuarantee");
 		}
 	});
@@ -61,11 +61,11 @@ HiPermission.create(context)
 你想申请别的权限？那也没问题
 
 ``` java
-List<PermissonItem> permissonItems = new ArrayList<PermissonItem>();
-permissonItems.add(new PermissonItem(Manifest.permission.CAMERA, "照相机", R.drawable.permission_ic_memory));
-permissonItems.add(new PermissonItem(Manifest.permission.ACCESS_FINE_LOCATION, "定位", R.drawable.permission_ic_location));
+List<PermissionItem> permissionItems = new ArrayList<PermissionItem>();
+permissionItems.add(new PermissionItem(Manifest.permission.CAMERA, "照相机", R.drawable.permission_ic_memory));
+permissionItems.add(new PermissionItem(Manifest.permission.ACCESS_FINE_LOCATION, "定位", R.drawable.permission_ic_location));
 HiPermission.create(MainActivity.this)
-			.permissions(permissonItems)
+			.permissions(permissionItems)
 			.checkMutiPermission(...);
 ```
 
@@ -76,7 +76,7 @@ HiPermission.create(MainActivity.this)
 ``` java
 HiPermission.create(MainActivity.this)
 			.title("亲爱的上帝")
-			.permissions(permissonItems)
+			.permissions(permissionItems)
 			.filterColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, getTheme()))//图标的颜色
 			.msg("为了保护世界的和平，开启这些权限吧！\n你我一起拯救世界！")
 			.style(R.style.PermissionBlueStyle)
@@ -119,11 +119,11 @@ styles.xml
 使用图标
 
 ``` java
-List<PermissonItem> permissons = new ArrayList<PermissonItem>();
+List<PermissionItem> permissions = new ArrayList<PermissionItem>();
 //使用图标
-permissons.add(new PermissonItem(Manifest.permission.CALL_PHONE, getString(R.string.permission_cus_item_phone), R.drawable.permission_ic_phone));
+permissions.add(new PermissionItem(Manifest.permission.CALL_PHONE, getString(R.string.permission_cus_item_phone), R.drawable.permission_ic_phone));
 HiPermission.create(MainActivity.this)
-		.permissions(permissons)
+		.permissions(permissions)
 		.style(R.style.PermissionDefaultGreenStyle)
 		.checkMutiPermission(...);
 ```
@@ -145,7 +145,7 @@ HiPermission.create(MainActivity.this)
 ``` java
 HiPermission.create(MainActivity.this)
                         .title(getString(R.string.permission_cus_title))
-                        .permissions(permissons)
+                        .permissions(permissions)
                         .msg(getString(R.string.permission_cus_msg))
                         .animStyle(R.style.PermissionAnimModal)//设置动画
                         .style(R.style.PermissionDefaultGreenStyle)//设置主题
@@ -193,3 +193,26 @@ HiPermission.create(MainActivity.this)
 
 # 最后
 如果这个对你有用，不妨来个star？
+
+# 联系我
+
+* QQ:505141450
+* Email:[hiweyye@gmail.com](mailto:hiweyye@gmail.com)
+* My Blog:[http://weyye.me](http://weyye.me)
+* 简书:[http://www.jianshu.com/u/c5da2f9c87fb](http://www.jianshu.com/u/c5da2f9c87fb)
+* CSDN:[http://blog.csdn.net/yewei02538](http://blog.csdn.net/yewei02538)
+
+# License
+    Copyright (C) 2017 WeyYe
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
