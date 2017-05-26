@@ -17,14 +17,14 @@
 
 Gradle:
 
-	compile 'me.weyye.hipermission:library:1.0.4'
+	compile 'me.weyye.hipermission:library:1.0.5'
 
 Or Maven:
 
 	<dependency>
 	  <groupId>me.weyye.hipermission</groupId>
 	  <artifactId>library</artifactId>
-	  <version>1.0.4</version>
+	  <version>1.0.5</version>
 	  <type>pom</type>
 	</dependency>
 
