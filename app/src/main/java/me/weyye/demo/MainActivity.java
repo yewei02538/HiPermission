@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //After you have set the theme, you must called filterColor () to set the color of the icon
                 // ,otherwise the default is black
                 List<PermissionItem> permissionItems = new ArrayList<PermissionItem>();
-                permissionItems.add(new PermissionItem(Manifest.permission.CAMERA, getString(R.string.permission_cus_item_camera), R.drawable.permission_ic_camera));
+                permissionItems.add(new PermissionItem(Manifest.permission.READ_PHONE_STATE, "手机状态", R.drawable.permission_ic_phone));
                 HiPermission.create(MainActivity.this)
                         .title(getString(R.string.permission_cus_title))
                         .permissions(permissionItems)

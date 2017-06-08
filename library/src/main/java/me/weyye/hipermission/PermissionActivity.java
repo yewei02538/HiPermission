@@ -227,23 +227,29 @@ public class PermissionActivity extends AppCompatActivity {
                 if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
                     //重新申请后再次拒绝
                     //弹框警告! haha
-                    String name = getPermissionItem(permissions[0]).PermissionName;
-                    String title = String.format(getString(R.string.permission_title), name);
-                    String msg = String.format(getString(R.string.permission_denied_with_naac), mAppName, name, mAppName);
-                    showAlertDialog(title, msg, getString(R.string.permission_reject), getString(R.string.permission_go_to_setting), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            try {
-                                Uri packageURI = Uri.parse("package:" + getPackageName());
-                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
-                                startActivityForResult(intent, REQUEST_SETTING);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                onClose();
+                    try {
+                        //permissions可能返回空数组，所以try-catch
+                        String name = getPermissionItem(permissions[0]).PermissionName;
+                        String title = String.format(getString(R.string.permission_title), name);
+                        String msg = String.format(getString(R.string.permission_denied_with_naac), mAppName, name, mAppName);
+                        showAlertDialog(title, msg, getString(R.string.permission_reject), getString(R.string.permission_go_to_setting), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                try {
+                                    Uri packageURI = Uri.parse("package:" + getPackageName());
+                                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageURI);
+                                    startActivityForResult(intent, REQUEST_SETTING);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    onClose();
+                                }
                             }
-                        }
-                    });
-                    onDeny(permissions[0], 0);
+                        });
+                        onDeny(permissions[0], 0);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        onClose();
+                    }
                 } else {
                     onGuarantee(permissions[0], 0);
                     if (mRePermissionIndex < mCheckPermissions.size() - 1) {
