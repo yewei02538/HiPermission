@@ -25,10 +25,10 @@ task clean(type: Delete) {
 
 ext {
     javaVersion = JavaVersion.VERSION_1_8
-    buildToolsVersion = "25.0.2"
-    compileVersion = 25
+    buildToolsVersion = "27.0.2"
+    compileVersion = 28
     minSdk = 14
-    targetSdk = 23
+    targetSdk = 28
     version_code = 1
     version_name = "1.0.7"
     supportVersion = "25.1.0"

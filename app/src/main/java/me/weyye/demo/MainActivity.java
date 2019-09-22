@@ -1,6 +1,7 @@
 package me.weyye.demo;
 
 import android.Manifest;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //default is normal style
                 HiPermission.create(MainActivity.this)
                         .animStyle(R.style.PermissionAnimFade)
+
+                        .filterColor(Color.parseColor("#FBE400"))
                         .checkMutiPermission(new PermissionCallback() {
                             @Override
                             public void onClose() {
